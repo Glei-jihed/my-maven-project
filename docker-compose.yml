@@ -1,0 +1,26 @@
+version: '3'
+services:
+  my-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+
+    networks:
+      - my-custom-bridge
+
+    
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    networks:
+      - my-custom-bridge
+
+networks:
+  my-custom-bridge:
+    external: true
+
+
